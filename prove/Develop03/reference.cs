@@ -1,42 +1,40 @@
 using System;
 
-namespace ScriptureMemorizer
+public class Reference
 {
-    public class Reference
+    private string _book;
+    private int _chapter;
+    private int _startVerse;
+    private int _endVerse;
+    private bool _isRange;
+
+    public Reference(string book, int chapter, int verse)
     {
-        public string Book { get; private set; }
-        public int Chapter { get; private set; }
-        public int StartVerse { get; private set; }
-        public int? EndVerse { get; private set; }
+        _book = book;
+        _chapter = chapter;
+        _startVerse = verse;
+        _endVerse = verse;
+        _isRange = false;
+    }
 
+    public Reference(string book, int chapter, int startVerse, int endVerse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
+        _isRange = true;
+    }
 
-        public Reference(string book, int chapter, int verse)
+    public string GetDisplayText()
+    {
+        if (_isRange)
         {
-            Book = book;
-            Chapter = chapter;
-            StartVerse = verse;
-            EndVerse = null;
+            return _book + " " + _chapter + ":" + _startVerse + "-" + _endVerse;
         }
-
-
-        public Reference(string book, int chapter, int startVerse, int endVerse)
+        else
         {
-            Book = book;
-            Chapter = chapter;
-            StartVerse = startVerse;
-            EndVerse = endVerse;
-        }
-
-        public override string ToString()
-        {
-            if (EndVerse.HasValue)
-            {
-                return Book + " " + Chapter + ":" + StartVerse + "-" + EndVerse.Value;
-            }
-            else
-            {
-                return Book + " " + Chapter + ":" + StartVerse;
-            }
+            return _book + " " + _chapter + ":" + _startVerse;
         }
     }
 }

@@ -1,69 +1,70 @@
 using System;
 using System.Collections.Generic;
 
-namespace ScriptureMemorizer
+public class Scripture
 {
-    public class Scripture
+    private Reference _reference;
+    private List<Word> _words;
+    private Random _random;
+
+    public Scripture(Reference reference, string text)
     {
-        private Reference Reference { get; set; }
-        private List<Word> Words { get; set; }
-        private Random RandomGenerator = new Random();
+        _reference = reference;
+        _words = new List<Word>();
+        _random = new Random();
 
-        public Scripture(Reference reference, string text)
+        string[] parts = text.Split(' ');
+
+        foreach (string part in parts)
         {
-            Reference = reference;
-            Words = new List<Word>();
-            string[] splitWords = text.Split(' ');
-            foreach (string word in splitWords)
+            Word word = new Word(part);
+            _words.Add(word);
+        }
+    }
+
+    public void HideRandomWords(int numberToHide)
+    {
+        int hiddenCount = 0;
+
+        while (hiddenCount < numberToHide)
+        {
+            int index = _random.Next(_words.Count);
+
+            if (!_words[index].IsHidden())
             {
-                Words.Add(new Word(word));
+                _words[index].Hide();
+                hiddenCount++;
+            }
+
+            if (IsCompletelyHidden())
+            {
+                break;
+            }
+        }
+    }
+
+    public bool IsCompletelyHidden()
+    {
+        foreach (Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                return false;
             }
         }
 
-        public void Display()
+        return true;
+    }
+
+    public string GetDisplayText()
+    {
+        string result = _reference.GetDisplayText() + "\n";
+
+        foreach (Word word in _words)
         {
-            Console.WriteLine(Reference.ToString());
-
-            List<string> wordStrings = new List<string>();
-            foreach (Word w in Words)
-            {
-                wordStrings.Add(w.ToString());
-            }
-
-            Console.WriteLine(string.Join(" ", wordStrings));
+            result += word.GetDisplayText() + " ";
         }
 
-        public void HideRandomWords(int count)
-        {
-            List<Word> visibleWords = new List<Word>();
-            foreach (Word w in Words)
-            {
-                if (w.IsHidden == false)
-                {
-                    visibleWords.Add(w);
-                }
-            }
-
-            if (visibleWords.Count == 0) return;
-
-            for (int i = 0; i < count && visibleWords.Count > 0; i++)
-            {
-                int index = RandomGenerator.Next(visibleWords.Count);
-                visibleWords[index].Hide();
-                visibleWords.RemoveAt(index);
-            }
-        }
-
-        public bool AllHidden()
-        {
-            foreach (Word w in Words)
-            {
-                if (w.IsHidden == false)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        return result;
     }
 }
