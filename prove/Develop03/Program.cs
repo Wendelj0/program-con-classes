@@ -1,9 +1,36 @@
 using System;
 
-class Program
+namespace ScriptureMemorizer
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Develop03 World!");
+        static void Main(string[] args)
+        {
+
+            Reference reference = new Reference("John", 3, 16);
+            string text = "For God so loved the world that he gave his one and only Son, " +
+                          "that whoever believes in him shall not perish but have eternal life.";
+            Scripture scripture = new Scripture(reference, text);
+
+            while (true)
+            {
+                Console.Clear();
+                scripture.Display();
+
+                if (scripture.AllHidden())
+                {
+                    Console.WriteLine("\nAll words are hidden! Great job memorizing!");
+                    break;
+                }
+
+                Console.WriteLine("\nPress Enter to hide words or type 'quit' to exit.");
+                string input = Console.ReadLine().ToLower();
+
+                if (input == "quit")
+                    break;
+
+                scripture.HideRandomWords(3);
+            }
+        }
     }
 }

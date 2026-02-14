@@ -3,7 +3,7 @@ public class Entry
     public string _date;
     public string _prompt;
     public string _response;
-    public int _mood; // NEW
+    public int _mood; 
 
     public void Display()
     {
