@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Creative feature: This program allows the user to select from multiple scriptures
+
 
         List<Scripture> scriptures = new List<Scripture>();
 
