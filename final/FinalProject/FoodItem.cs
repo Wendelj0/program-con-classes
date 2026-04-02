@@ -1,21 +1,39 @@
-using System;
-
 public class FoodItem
 {
-    private string name;
-    private double calories;
-    private double protein;
-    private double carbs;
-    private double fat;
+    protected string _name;
 
-    public string Name { get => name; set => name = value; }
-    public double Calories { get => calories; set => calories = value; }
-    public double Protein { get => protein; set => protein = value; }
-    public double Carbs { get => carbs; set => carbs = value; }
-    public double Fat { get => fat; set => fat = value; }
-
-    public virtual void DisplayNutrition()
+    public FoodItem(string name)
     {
-        Console.WriteLine($"{Name}: {Calories} cal, {Protein}g protein, {Carbs}g carbs, {Fat}g fat");
+        _name = name;
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public virtual double GetCalories()
+    {
+        return 0;
+    }
+
+    public virtual double GetProtein()
+    {
+        return 0;
+    }
+
+    public virtual double GetCarbs()
+    {
+        return 0;
+    }
+
+    public virtual double GetFats()
+    {
+        return 0;
+    }
+
+    public virtual string GetDetails()
+    {
+        return _name;
     }
 }

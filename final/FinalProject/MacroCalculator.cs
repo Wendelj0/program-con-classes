@@ -1,14 +1,22 @@
-using System;
-
 public class MacroCalculator
 {
-    public void CalculateMealMacros(Meal meal)
+    public double CalculateCalories(FoodItem food, double servings)
     {
-        Console.WriteLine("Calculating macros for meal... (placeholder)");
+        return food.GetCalories() * servings;
     }
 
-    public void CalculateDailyMacros(DailyLog log)
+    public double CalculateProtein(FoodItem food, double servings)
     {
-        Console.WriteLine("Calculating macros for daily log... (placeholder)");
+        return food.GetProtein() * servings;
+    }
+
+    public double CalculateCarbs(FoodItem food, double servings)
+    {
+        return food.GetCarbs() * servings;
+    }
+
+    public double CalculateFats(FoodItem food, double servings)
+    {
+        return food.GetFats() * servings;
     }
 }

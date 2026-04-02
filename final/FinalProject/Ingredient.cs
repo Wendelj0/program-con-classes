@@ -1,15 +1,50 @@
-using System;
-
 public class Ingredient
 {
-    private FoodItem food;
-    private double quantity; // grams
+    private FoodItem _food;
+    private double _servings;
 
-    public FoodItem Food { get => food; set => food = value; }
-    public double Quantity { get => quantity; set => quantity = value; }
-
-    public void DisplayIngredient()
+    public Ingredient(FoodItem food, double servings)
     {
-        Console.WriteLine($"{Quantity}g of {Food.Name}");
+        _food = food;
+        _servings = servings;
+    }
+
+    public FoodItem GetFood()
+    {
+        return _food;
+    }
+
+    public double GetServings()
+    {
+        return _servings;
+    }
+
+    public double GetCalories()
+    {
+        return _food.GetCalories() * _servings;
+    }
+
+    public double GetProtein()
+    {
+        return _food.GetProtein() * _servings;
+    }
+
+    public double GetCarbs()
+    {
+        return _food.GetCarbs() * _servings;
+    }
+
+    public double GetFats()
+    {
+        return _food.GetFats() * _servings;
+    }
+
+    public string GetSummary()
+    {
+        return _food.GetName() + " x " + _servings +
+               " | Calories: " + GetCalories() +
+               " Protein: " + GetProtein() +
+               " Carbs: " + GetCarbs() +
+               " Fats: " + GetFats();
     }
 }
