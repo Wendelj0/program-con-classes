@@ -70,7 +70,7 @@ public class DailyLog
 
     public void DisplaySummary()
     {
-        Console.WriteLine("\n--- Daily Summary ---");
+        Console.WriteLine("\n-------- Daily Summary --------");
 
         foreach (Meal meal in _meals)
         {

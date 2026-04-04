@@ -9,7 +9,7 @@ public class FoodDatabase
     {
         _foods = new Dictionary<string, WholeFood>();
 
-        AddFood(new WholeFood("chicken breast", 165, 31, 0, 3.6));
+        AddFood(new WholeFood("chicken", 165, 31, 0, 3.6));
         AddFood(new WholeFood("white rice", 205, 4.3, 45, 0.4));
         AddFood(new WholeFood("egg", 78, 6, 0.6, 5));
         AddFood(new WholeFood("apple", 95, 0.5, 25, 0.3));
@@ -43,7 +43,7 @@ public class FoodDatabase
 
     public void DisplayAllFoods()
     {
-        Console.WriteLine("\n--- Food Database ---");
+        Console.WriteLine("\n-------- Food Database --------");
 
         foreach (KeyValuePair<string, WholeFood> pair in _foods)
         {

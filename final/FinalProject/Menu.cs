@@ -22,10 +22,10 @@ public class Menu
         while (choice != 9)
         {
             Console.WriteLine("\n--- Macro Tracker ---");
-            Console.WriteLine("1. Look up a food");
-            Console.WriteLine("2. Add food to a meal");
+            Console.WriteLine("1. Search food");
+            Console.WriteLine("2. Add meal");
             Console.WriteLine("3. Create a recipe");
-            Console.WriteLine("4. View food database");
+            Console.WriteLine("4. View full food database");
             Console.WriteLine("5. View daily summary");
             Console.WriteLine("6. Check goals");
             Console.WriteLine("7. Create or update goals");
@@ -69,7 +69,7 @@ public class Menu
             }
             else if (choice == 9)
             {
-                Console.WriteLine("Goodbye.");
+                Console.WriteLine("Thank you for using the Macro Tracker. Come Again!");
             }
             else
             {
