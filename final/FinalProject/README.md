@@ -13,3 +13,5 @@ Inheritance: WholeFood and RecipeFood inherit from FoodItem
 Polymorphism: Methods like GetCalories() behaves differently depending on if it's WholeFood or a RecipeFood
 
 An important thing to know is the values in the food database aren't exact they are rough estimates. The use has the option to add foods to the database to make it more accurate depending on the type of food they are using like whole milk or skim milk.
+
+Another important thing to know is that there are default goals set in place in the code the user can create their own goals by selecting the option create or update goals this will change the goals that are set allowing the user to peronsalize their macro calculator.
